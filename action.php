@@ -9,9 +9,9 @@ $subject = 'from '.$_POST['name'];
 
 $random_hash = md5(date('r', time())); 
 //define the headers we want passed. Note that they are separated with \r\n 
-$headers = "From: ".$_POST['email']."\r\nReply-To: ".$_POST['email']; 
 //add boundary string and mime type specification 
-$headers .= "\r\nMime-Version: 1.0 (1.0)\r\nContent-Type: multipart/mixed; charset=utf-8; boundary=\"PHP-mixed-".$random_hash."\"\r\n\r\n"; 
+$headers = "Mime-Version: 1.0 (1.0)\r\nContent-Transfer-Encoding: base64\r\nContent-Type: multipart/mixed; charset=iso-8859-1; boundary=\"PHP-mixed-".$random_hash."\"\r\n"; 
+$headers .= "From: ".$_POST['email']."\r\nReply-To: ".$_POST['email']."\r\n"; 
 
 //read the atachment file contents into a string
 //encode it with MIME base64,
@@ -25,29 +25,14 @@ $filename= $_FILES['fileToUpload'][name];
 ob_start(); //Turn on output buffering 
 ?> 
 --PHP-mixed-<?php echo $random_hash; ?>  
-Content-Type: multipart/alternative; boundary="PHP-alt-<?php echo $random_hash; ?>" 
 
---PHP-alt-<?php echo $random_hash; ?>  
-Content-Type: text/plain; charset="utf-8" 
-Content-Transfer-Encoding: 8bit
-
-Message from request form. From <?php echo $message_name ?>. 
-Sender email is <?php echo $_POST['email'] ?>. 
-Sender phone is <?php echo $_POST['phone'] ?>.
-Sender meeting date is <?php echo $_POST['date'] ?>.
-
-
---PHP-alt-<?php echo $random_hash; ?>  
-Content-Type: text/html; charset="utf-8" 
-Content-Transfer-Encoding: 8bit
-
+Content-Type: text/html; charset="iso-8859-1" 
+Content-Transfer-Encoding: 7bit
 
 <h2>Message from request form. From <?php echo $_POST['name'] ?>.</h2> 
 <p>Sender email is <?php echo $_POST['email'] ?>.</p> 
 <p>Sender phone is <?php echo $_POST['phone'] ?>.</p>
 <p>Sender meeting date is <?php echo $_POST['date'] ?>.</p>
-
---PHP-alt-<?php echo $random_hash; ?>-- 
 
 --PHP-mixed-<?php echo $random_hash; ?>  
 Content-Type: application/zip; name="<?php echo $filename ?>"  
