@@ -1,0 +1,71 @@
+.form-container {
+  width: 600px;
+  padding: 40px 20px 20px 20px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  margin-top: 20px;
+}
+
+.form-control {
+  margin-bottom: 1rem;
+}
+
+.fields-container {
+  width: 400px;
+  margin: 0 auto;
+}
+
+.headline {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.form-group-display {
+  display: flex; 
+}
+
+.meetingdate-position {
+  width: 242px;
+  margin-left: 24px;
+}
+
+.fileUpload {
+    position: relative;
+    overflow: hidden;
+    margin: 10px 10px 20px 0;
+    border: 1px solid gray;
+    width: 100%;
+}
+
+.sendRequest {
+    position: relative;
+    overflow: hidden;
+    border: 1px solid gray;
+    width: 100%;
+}
+
+.sendRequest input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    padding-left: 165px;
+    padding-right: 165px;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.fileUpload input.upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
